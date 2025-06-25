@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Route from {{ source }} to {{ destination }}</h2>
+        
+        {% if blocked_roads %}
+        <div class="alert alert-warning">
+            <h4><i class="fas fa-exclamation-triangle"></i> Blocked Roads Detected</h4>
+            <ul>
+                {% for road in blocked_roads %}
+                <li class="blocked-road">{{ road }}</li>
+                {% endfor %}
+            </ul>
+            <p>Routes with blocked segments are shown in red.</p>
+        </div>
+        {% else %}
+        <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i> No blocked roads detected on this route.
+        </div>
+        {% endif %}
+        
+        <div class="map-container">
+            {{ map_html|safe }}
+        </div>
+        
+        <a href="/" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left"></i> Back to Search
+        </a>
+    </div>
+</div>
+{% endblock %}

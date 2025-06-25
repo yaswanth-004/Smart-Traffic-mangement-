@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Vehicle Parking Detection</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <img src="{{ url_for('video_feed') }}" class="img-fluid">
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Parking Spaces</h5>
+                    <p class="card-text">Real-time parking space detection</p>
+                    <a href="/" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

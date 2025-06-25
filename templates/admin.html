@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="admin-panel">
+            <h2><i class="fas fa-user-shield"></i> Admin Panel</h2>
+            
+            {% if message %}
+            <div class="alert alert-info">{{ message }}</div>
+            {% endif %}
+            
+            <div class="card mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h5>Block/Unblock Roads</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Source Location</label>
+                                <input type="text" class="form-control" name="source" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Destination Location</label>
+                                <input type="text" class="form-control" name="destination" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Road Name</label>
+                            <input type="text" class="form-control" name="road" required>
+                        </div>
+                        <div class="btn-group">
+                            <button type="submit" name="action" value="block" class="btn btn-danger">
+                                <i class="fas fa-ban"></i> Block Road
+                            </button>
+                            <button type="submit" name="action" value="unblock" class="btn btn-success">
+                                <i class="fas fa-check-circle"></i> Unblock Road
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5>Currently Blocked Roads</h5>
+                </div>
+                <div class="card-body">
+                    {% if blocked_roads %}
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Route</th>
+                                    <th>Blocked Roads</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for route, roads in blocked_roads.items() %}
+                                <tr>
+                                    <td>{{ route.replace('_', ' → ') }}</td>
+                                    <td>
+                                        {% for road in roads %}
+                                        <span class="badge bg-danger">{{ road }}</span>
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> No roads are currently blocked.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

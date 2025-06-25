@@ -1,0 +1,22 @@
+{
+    "chennai_ramapuram": [
+        "block road",
+        "unblock road"
+    ],
+    "chennai_avadi": [
+        "block road",
+        "unblock road"
+    ],
+    "chennai_nellor": [
+        "block road"
+    ],
+    "chennai_mumbai": [
+        "block road"
+    ],
+    "chennai_triupati": [
+        "unblock road"
+    ],
+    "triupati_nellor": [
+        "block road"
+    ]
+}
