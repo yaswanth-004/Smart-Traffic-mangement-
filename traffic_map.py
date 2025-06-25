@@ -46,7 +46,7 @@ def get_routes(source, destination):
     dest_lat, dest_lng = get_coordinates(destination)
 
     if src_lat is None or dest_lat is None:
-        print("❌ Invalid source or destination. Please try again.")
+        print(" Invalid source or destination. Please try again.")
         return
 
     url = "https://routes.googleapis.com/directions/v2:computeRoutes"
