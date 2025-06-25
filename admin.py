@@ -41,14 +41,14 @@ def remove_blocked_road(source, destination, blocked_road):
             del blocked_roads[route_key]  
 
         save_blocked_roads(blocked_roads)
-        print(f"✅ Road '{blocked_road}' is now UNBLOCKED between {source} and {destination}.")
+        print(f"Road '{blocked_road}' is now UNBLOCKED between {source} and {destination}.")
     else:
-        print(f"⚠️ Road '{blocked_road}' is NOT blocked on this route.")
+        print(f" Road '{blocked_road}' is NOT blocked on this route.")
 
 def admin_interface():
     """Admin panel to block or unblock roads."""
     while True:
-        print("\n===== 🛑 ADMIN PANEL =====")
+        print("\n===== ADMIN PANEL =====")
         print("1️⃣ Block a Road")
         print("2️⃣ Unblock a Road")
         print("3️⃣ View Blocked Roads")
@@ -74,16 +74,16 @@ def admin_interface():
                 print("\n🚧 BLOCKED ROADS LIST:")
                 for route, roads in blocked_roads.items():
                     src, dest = route.split("_")
-                    print(f"🛑 {src.capitalize()} → {dest.capitalize()}: {', '.join(roads)}")
+                    print(f" {src.capitalize()} → {dest.capitalize()}: {', '.join(roads)}")
             else:
-                print("✅ No roads are currently blocked.")
+                print(" No roads are currently blocked.")
 
         elif choice == "4":
-            print("🔴 Exiting Admin Panel.")
+            print(" Exiting Admin Panel.")
             break
 
         else:
-            print("⚠️ Invalid choice. Try again.")
+            print(" Invalid choice. Try again.")
 
 if __name__ == "__main__":
     admin_interface()
