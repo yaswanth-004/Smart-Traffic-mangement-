@@ -27,7 +27,7 @@ def add_blocked_road(source, destination, blocked_road):
     blocked_roads[route_key].append(blocked_road.lower())  # Store in lowercase
 
     save_blocked_roads(blocked_roads)
-    print(f"🚧 Road '{blocked_road}' is now BLOCKED between {source} and {destination}.")
+    print(f"Road '{blocked_road}' is now BLOCKED between {source} and {destination}.")
 
 def remove_blocked_road(source, destination, blocked_road):
     """Unblock a road between two locations."""
@@ -71,7 +71,7 @@ def admin_interface():
         elif choice == "3":
             blocked_roads = load_blocked_roads()
             if blocked_roads:
-                print("\n🚧 BLOCKED ROADS LIST:")
+                print("\n BLOCKED ROADS LIST:")
                 for route, roads in blocked_roads.items():
                     src, dest = route.split("_")
                     print(f" {src.capitalize()} → {dest.capitalize()}: {', '.join(roads)}")
