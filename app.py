@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 #
 # Configuration
-API_KEY = "AIzaSyAuEeKtQ2BvMrSspAyUnavpymV-n-p2haI"
+API_KEY = "Add yours"
 BLOCKED_ROADS_FILE = "blocked_roads.json"
 from flask import send_from_directory
 
