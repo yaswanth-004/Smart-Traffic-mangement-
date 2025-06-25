@@ -6,7 +6,7 @@ import folium
 from datetime import datetime, timedelta
 
 # Google API Key (Please replace with your own)
-API_KEY = "AIzaSyAuEeKtQ2BvMrSspAyUnavpymV-n-p2haI"
+API_KEY = "Add your "
 
 # Blocked Roads JSON File - Use the full path provided
 BLOCKED_ROADS_FILE = r"C:\Users\HP\tamilnadiu hackton\traffic_module\blocked_roads.json"
@@ -16,19 +16,19 @@ def load_blocked_roads():
     try:
         # Verify file exists
         if not os.path.exists(BLOCKED_ROADS_FILE):
-            print(f"⚠️ Blocked roads file not found: {BLOCKED_ROADS_FILE}")
+            print(f" Blocked roads file not found: {BLOCKED_ROADS_FILE}")
             return {}
 
         # Open and parse JSON
         with open(BLOCKED_ROADS_FILE, "r") as file:
             blocked_roads = json.load(file)
-            print("✅ Blocked roads successfully loaded.")
+            print(" Blocked roads successfully loaded.")
             return blocked_roads
     except json.JSONDecodeError:
-        print(f"❌ Error: Invalid JSON format in {BLOCKED_ROADS_FILE}")
+        print(f"Error: Invalid JSON format in {BLOCKED_ROADS_FILE}")
         return {}
     except Exception as e:
-        print(f"❌ Unexpected error loading blocked roads: {e}")
+        print(f"Unexpected error loading blocked roads: {e}")
         return {}
 
 def check_road_blocked(source, destination, route_coordinates):
@@ -73,7 +73,7 @@ def get_coordinates(location_name):
         lng = geo_data['results'][0]['geometry']['location']['lng']
         return lat, lng
     else:
-        print(f"❌ Error fetching coordinates for {location_name}: {geo_data['status']}")
+        print(f"Error fetching coordinates for {location_name}: {geo_data['status']}")
         return None, None
 
 def get_routes(source, destination):
@@ -82,7 +82,7 @@ def get_routes(source, destination):
     dest_lat, dest_lng = get_coordinates(destination)
 
     if src_lat is None or dest_lat is None:
-        print("❌ Invalid source or destination. Please try again.")
+        print("Invalid source or destination. Please try again.")
         return
 
     url = "https://routes.googleapis.com/directions/v2:computeRoutes"
@@ -158,9 +158,9 @@ def get_routes(source, destination):
 
         # Highlight blocked segments in red
         if blocked_segments:
-            print("\n🚧 BLOCKED ROAD SEGMENTS:")
+            print("\n BLOCKED ROAD SEGMENTS:")
             for segment in blocked_segments:
-                print(f"⚠️ Blocked: {segment}")
+                print(f" Blocked: {segment}")
                 # Add red markers or lines to indicate blocked segments
                 folium.PolyLine(
                     decoded_coordinates, 
@@ -189,21 +189,21 @@ def get_routes(source, destination):
         # Save map as an HTML file with dynamic visualization
         file_name = f"{source}_to_{destination}_route.html".replace(" ", "_")
         route_map.save(file_name)
-        print(f"\n✅ Dynamic route map saved as '{file_name}'. Open it in a browser.")
+        print(f"\nDynamic route map saved as '{file_name}'. Open it in a browser.")
 
     else:
-        print("❌ Error:", response.text)
+        print(" Error:", response.text)
 
 # Interactive route selection
 def main():
-    print("🗺️ Advanced Route Visualization Tool")
+    print("Advanced Route Visualization Tool")
     
     # Print the actual file path being used
-    print(f"📁 Blocked Roads File: {BLOCKED_ROADS_FILE}")
+    print(f" Blocked Roads File: {BLOCKED_ROADS_FILE}")
     
     # Verify file exists before proceeding
     if not os.path.exists(BLOCKED_ROADS_FILE):
-        print("❌ Blocked roads file not found. Please check the file path.")
+        print(" Blocked roads file not found. Please check the file path.")
         return
 
     source = input("Enter Source Location: ")
