@@ -4,7 +4,7 @@ import polyline
 import folium
 from datetime import datetime, timedelta
 
-API_KEY = "AIzaSyAuEeKtQ2BvMrSspAyUnavpymV-n-p2haI"  # Replace with your API Key
+API_KEY = "ADD KEY"  # Replace with your API Key
 
 def get_coordinates(location_name):
     """Fetch latitude and longitude for a given location."""
