@@ -73,10 +73,10 @@ def get_routes(source, destination):
         routes = data.get("routes", [])
 
         if not routes:
-            print("❌ No routes found.")
+            print(" No routes found.")
             return
 
-        # ========================== 🌍 MAP VISUALIZATION ==========================
+        # ==========================  MAP VISUALIZATION ==========================
         route_map = folium.Map(location=[src_lat, src_lng], zoom_start=10)
 
         # Process each route
@@ -104,12 +104,12 @@ def get_routes(source, destination):
         # Highlight the shortest route in Blue
         folium.PolyLine(shortest_route, color="blue", weight=6, opacity=0.9, tooltip="Shortest Path").add_to(route_map)
 
-        # 🚦 Traffic Signals & Junctions
+        # Traffic Signals & Junctions
         junctions = get_traffic_junctions(shortest_route)
         for name, lat, lng in junctions:
             folium.Marker(
                 [lat, lng],
-                popup=f"🚦 {name}",
+                popup=f" {name}",
                 icon=folium.Icon(color="orange", icon="exclamation-sign")
             ).add_to(route_map)
 
@@ -128,10 +128,10 @@ def get_routes(source, destination):
         # Save map as an HTML file
         file_name = f"{source}_to_{destination}_traffic_routes.html".replace(" ", "_")
         route_map.save(file_name)
-        print(f"\n✅ Route map saved as '{file_name}'. Open it in a browser.")
+        print(f"\n Route map saved as '{file_name}'. Open it in a browser.")
 
     else:
-        print("❌ Error:", response.text)
+        print(" Error:", response.text)
 
 # Get user input for source and destination
 source = input("Enter Source Location: ")
